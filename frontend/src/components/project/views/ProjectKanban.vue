@@ -354,9 +354,12 @@ const DRAG_OPTIONS = {
 	dragClass: 'task-dragging',
 	delayOnTouchOnly: true,
 	delay: 1000,
-	// scroll the board while dragging towards an off-screen bucket; sortable's default
-	// 30px edge zone is narrower than the board padding, so it never kicks in
+	// Scroll the board while dragging towards an off-screen bucket. With native drag and drop
+	// sortable leaves the innermost scroll container (the board) to the browser's own drag
+	// autoscroll, which only reacts within a few pixels of the edge, so let sortable drive it.
+	// Its default 30px edge zone is also narrower than the board padding.
 	scroll: true,
+	forceAutoScrollFallback: true,
 	scrollSensitivity: 100,
 	scrollSpeed: 20,
 } as const
